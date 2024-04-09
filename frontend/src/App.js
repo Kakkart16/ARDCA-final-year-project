@@ -1,8 +1,9 @@
+import VideoUpload from './VideoUpload'
 
 function App() {
   return (
     <div>
-      <p className="">Hello world</p>
+      <VideoUpload/>
     </div>
   );
 }

@@ -74,7 +74,8 @@ def func(video_file_path):
     # video_file_path = args.videofile
 
     # ----- Final Query Execution -----
-    query = f"""./Utilities/ffmpeg.exe -i {video_file_path} -vf fps=1 -loglevel quiet -stats ./Output/output_%04d.png"""
+    
+    query = f"""/Utilities/ffmpeg.exe -i {video_file_path} -vf fps=1 -loglevel quiet -stats ./Output/output_%04d.png"""
     subprocess.run(query)
 
 

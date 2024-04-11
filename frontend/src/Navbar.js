@@ -12,7 +12,7 @@ const Navbar = () => {
           <img src={sentiment} alt="" className='h-full'/>
         </div>  
 
-        <div className='flex flex-row justify-evenly text-base items-center'>
+        <div className='flex flex-row justify-evenly text-base font-semibold items-center'>
           <div className='px-4'> <button>Home</button> </div>
           <div className='px-4'> <button>Contact Us</button> </div>
           <div className='px-4 hover:cursor-pointer'> <AccountCircleIcon style={{ color: 'white', fontSize: 30 }}/> </div>

@@ -13,14 +13,15 @@ function FileUpload() {
 
   const handleUpload = () => {
     const formData = new FormData();
-    formData.append('video', selectedFile);
+    formData.append('videofile', selectedFile);
     console.log(formData);
-    fetch('api', {
+    fetch('http://127.0.0.1:8000/process-video/', {
       method: 'POST',
       body: formData,
     })
       .then(response => {
-        
+        console.log(response.info);
+        // console.log(response);
       })
       .catch(error => { 
         console.log(error,"Unable to Upload File.");

@@ -7,16 +7,21 @@ charset-normalizer==3.3.2
 click==8.1.7
 contourpy==1.2.1
 cycler==0.12.1
+decorator==4.4.2
 Django==5.0.4
 djangorestframework==3.15.1
+ffmpeg-python==0.2.0
 Flask==3.0.3
 flatbuffers==24.3.25
 fonttools==4.51.0
+future==1.0.0
 gast==0.5.4
 google-pasta==0.2.0
 grpcio==1.62.1
 h5py==3.10.0
 idna==3.6
+imageio==2.34.0
+imageio-ffmpeg==0.4.9
 itsdangerous==2.1.2
 Jinja2==3.1.3
 keras==3.1.1
@@ -28,6 +33,7 @@ MarkupSafe==2.1.5
 matplotlib==3.8.4
 mdurl==0.1.2
 ml-dtypes==0.3.2
+moviepy==1.0.3
 namex==0.0.7
 numpy==1.26.4
 opencv-python==4.9.0.80
@@ -35,7 +41,9 @@ opt-einsum==3.3.0
 optree==0.11.0
 packaging==24.0
 pillow==10.3.0
+proglog==0.1.10
 protobuf==4.25.3
+pydub==0.25.1
 Pygments==2.17.2
 pyparsing==3.1.2
 python-dateutil==2.9.0.post0
@@ -48,6 +56,7 @@ tensorboard-data-server==0.7.2
 tensorflow==2.16.1
 tensorflow-io-gcs-filesystem==0.36.0
 termcolor==2.4.0
+tqdm==4.66.2
 typing_extensions==4.11.0
 urllib3==2.2.1
 Werkzeug==3.0.2

@@ -5,3 +5,5 @@ envW/*
 
 
 *.pyc
+
+db.sqlite3

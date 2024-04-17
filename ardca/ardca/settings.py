@@ -34,6 +34,8 @@ CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
 ]
 
+AUTH_USER_MODEL = 'videoProcessor.CustomUser'
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -108,6 +110,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+
 
 
 # Internationalization

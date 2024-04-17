@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from .models import ProcessedVideo
-from rest_framework.decorators import api_view
+from .models import CustomUser, ProcessedVideo
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
 import os
 from .visualize import process
 from django.core.files.uploadedfile import TemporaryUploadedFile
@@ -13,6 +14,7 @@ import shutil
 
 @api_view(['POST'])
 @csrf_exempt
+@permission_classes([IsAuthenticated])
 def process_video(request):
     if request.method == 'POST' and request.FILES.get('videofile'): 
         video_file = request.FILES['videofile']
@@ -35,6 +37,7 @@ def process_video(request):
         info = process(video_file_path)
         
         processed_video = ProcessedVideo.objects.create(
+            user = request.user,
             video_title = video_file.name, 
             duration = info.get('duration'),
             emotional_tone = info.get('emotional_tone'),
@@ -49,4 +52,26 @@ def process_video(request):
         return JsonResponse({'info': info, 'message': 'Video processed successfully'})
     else:
         return JsonResponse({'error': 'No video file provided'}, status=status.HTTP_400_BAD_REQUEST)
+    
+    
         
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def user_processed_videos(request):
+
+    processed_videos = ProcessedVideo.objects.filter(user=request.user)
+    
+    processed_videos_data = [
+        {
+            'video_title': video.video_title,
+            'duration': video.duration,
+            'emotional_tone': video.emotional_tone,
+            'engagement_score': video.engagement_score,
+            'pareto': video.pareto.url if video.pareto else None,
+            'axvspan': video.axvspan.url if video.axvspan else None,
+        }
+        for video in processed_videos
+    ]
+    
+    # Return the processed video data
+    return JsonResponse({'processed_videos': processed_videos_data})
